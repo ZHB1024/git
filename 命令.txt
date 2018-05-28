@@ -34,3 +34,15 @@ ssh-keygen -t rsa -C "2278164417@qq.com"
 git clone git@github.com:ZHB1024/gitskills.git
 
 
+-----------------删除---------------
+rm test.txt
+
+告诉你哪些文件被删除了
+git status
+
+确定要删除
+git rm text.txt
+git commit -m "删除test.txt"
+
+反悔了
+git checkout -- test.txt
