@@ -179,4 +179,29 @@ git merge dev
 
 合并后就可以删除分支了
 git branch -d dev
+-----------------------------解决分支冲突--------------------
+创建feature分支
+git checkout -b feature
+
+修改branch.txt文件 增加：this is feature1 branch
+然后 git commit -a -m "branch feature update"
+
+切到master
+git checkout master
+修改branch.txt文件 增加：this is master
+然后 git commit -a -m "master update"
+
+git merge feature
+cat branch.txt
+显示一下内容：
+<<<<<<< HEAD
+this is master
+=======
+this is feature1 branch
+>>>>>>> feature1
+
+修改 branch.txt 文件后 提交就可以了
+
+
+--------------------------------------------------------
 
