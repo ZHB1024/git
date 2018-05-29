@@ -5,18 +5,18 @@ https://www.yiibai.com/git/git-quick-start.html
 Untracked          Unmodified       Modified      Staged
  
  
---------------------------------命令-------------------------------------
----使用git命令初始化库
+----------------------------------------------------命令-------------------------------------
+-----使用git命令初始化库-------
 进入到某个文件夹
 cd c:
 cd gittest
 git init
 
----从github中clone
+-------从github中clone---------
 git clone git@github.com:ZHB1024/gitskills.git  gittest
 
 
----创建文件夹及文件
+--------创建文件夹及文件-----------
 mkdir test
 cd test
 
@@ -25,14 +25,17 @@ git add test.txt
 git commit -m "init test file"
 
 修改test.txt文件
+git commit -a -m "skip add test"
+或
 git add test.txt
 git commit -m "update test file"
 
----查看某个文件内容
+
+---------查看某个文件内容------------
 cat test.txt
 
 
----查看文件状态
+----------查看文件状态---------------
 git status
 或
 git status -s
@@ -45,14 +48,34 @@ git status -short
 出现在靠左边的 M 表示该文件被修改了并放入了暂存区
 MM表示 在工作区被修改并提交到暂存区后又在工作区中被修改了
 
+只显示尚未暂存的改动，而不是自上次提交以来所做的所有改动
+git diff 
+git difftool 命令来用 Araxis ，emerge 或 vimdiff 等软件输出 diff 分析结果。 
+使用 git difftool --tool-help 命令来看你的系统支持哪些 Git Diff 插件。
 
----检出文件，从资源库
+查看已经暂存起来的变化：(--staged 和 --cached 是同义词)
+git diff --cached 
+
+
+------------检出文件，从资源库-----------
 git checkout -- readme.txt
 
 
 
----查看日志
+---------------查看日志---------------
+最近的更新排在最上面
 git log
+最近两次提交
+git log -2
+每次提交的内容差异
+git log -p
+每次提交的简略的统计信息
+git log --stat
+
+
+---------------------------------------撤销操作--------------------------
+撤销暂存区的文件
+git reset HEAD mytext.txt
 
 git reset --hard HEAD~1
 git reset --hard 7686d1555163583196b769920ea2ab444605c323              commit id
@@ -66,6 +89,8 @@ ssh-keygen -t rsa -C "2278164417@qq.com"
 
 
 --------------------------------------------删除------------------------------------------
+从暂存区域移除，然后提交
+
 rm test.txt
 
 告诉你哪些文件被删除了
@@ -78,7 +103,12 @@ git commit -m "删除test.txt"
 反悔了
 git checkout -- test.txt
 
------------------------------------------添加远程库---------------------------------
+--------------------------------------------修改文件名------------------------------------------
+git mv zhb02.txt zhb03.txt
+git commit -m "mv file"
+
+
+-----------------------------------------添加远程库---------------------------------------
 在github上创建库 git-test
 在本地git bash 命令行中执行
 git remote add origin git@github.com:ZHB1024/git-test.git
@@ -87,6 +117,18 @@ git push -u origin master
 
 从github库中下载到git库中
 git pull origin
+拉取仓库中有但你没有的信息
+git fetch origin
+
+----------------------------------------查看远程仓库----------------------------------
+git remote -v
+git remote show origin
+
+
+---------------------------------------远程仓库的移除与重命名---------------------------
+git remote rename gs newgs
+git remote rm newgs
+
 
 
 -----------------------------------------添加忽略文件--------------------------------------------
