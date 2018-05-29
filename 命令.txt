@@ -34,7 +34,7 @@ ssh-keygen -t rsa -C "2278164417@qq.com"
 git clone git@github.com:ZHB1024/gitskills.git
 
 
------------------删除---------------
+--------------------------------------------删除------------------------------------------
 rm test.txt
 
 告诉你哪些文件被删除了
@@ -46,3 +46,13 @@ git commit -m "删除test.txt"
 
 反悔了
 git checkout -- test.txt
+
+-----------------------------------------添加远程库---------------------------------
+在github上创建库 git-test
+在本地git bash 命令行中执行
+git remote add origin git@github.com:ZHB1024/git-test.git
+git push -u origin master
+刷新github上的git-test库 可以看到已上传
+
+从github库中下载到git库中
+git pull origin
