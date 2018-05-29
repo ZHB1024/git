@@ -6,6 +6,10 @@ Untracked          Unmodified       Modified      Staged
  
  
 ----------------------------------------------------命令-------------------------------------
+-------创建git的命令别名
+如：
+git config --global alias.st status
+
 -----使用git命令初始化库-------
 进入到某个文件夹
 cd c:
@@ -74,7 +78,11 @@ git log --stat
 
 
 ---------------------------------------撤销操作--------------------------
+撤销工作区文件
+git checkout mytext.txt
+
 撤销暂存区的文件
+git reset mytext.txt
 git reset HEAD mytext.txt
 
 git reset --hard HEAD~1
@@ -112,13 +120,19 @@ git commit -m "mv file"
 在github上创建库 git-test
 在本地git bash 命令行中执行
 git remote add origin git@github.com:ZHB1024/git-test.git
+
+推送内容
 git push -u origin master
 刷新github上的git-test库 可以看到已上传
 
+抓取
 从github库中下载到git库中
 git pull origin
 拉取仓库中有但你没有的信息
 git fetch origin
+
+本地分支和远程分支的链接关系没有创建，用命令
+git branch --set-upstream-to <branch-name> origin/<branch-name>
 
 ----------------------------------------查看远程仓库----------------------------------
 git remote -v
@@ -179,6 +193,10 @@ git merge dev
 
 合并后就可以删除分支了
 git branch -d dev
+
+分支没有被合并时，可以强行删除分支
+git branch -D dev
+
 -----------------------------解决分支冲突--------------------
 创建feature分支
 git checkout -b feature
@@ -192,6 +210,7 @@ git checkout master
 然后 git commit -a -m "master update"
 
 git merge feature
+或 git merge --no-ff -m "merged feature " feature
 cat branch.txt
 显示一下内容：
 <<<<<<< HEAD
@@ -204,6 +223,16 @@ this is feature1 branch
 
 查看分支合并图
 git log --graph
+
+将分叉 变为直线
+ git rebase
+
+----------------------暂存分支----------------
+git stash
+git stash list
+git stash pop
+1.工作区和暂存区是共用的，在各个分支里都可以看到没被stash的文件。
+2.在工作区和暂存区的文件都可以stash，pop之后都会出现在工作区。
 
 
 --------------------------------------------------------
