@@ -34,6 +34,11 @@ git commit -a -m "skip add test"
 git add test.txt
 git commit -m "update test file"
 
+添加所有文件
+git add .
+
+空文件夹默认不能添加
+
 
 ---------查看某个文件内容------------
 cat test.txt
